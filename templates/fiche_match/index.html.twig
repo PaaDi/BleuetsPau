@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheMatch index{% endblock %}
+
+{% block body %}
+    <h1>FicheMatch index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateDebut</th>
+                <th>Nom</th>
+                <th>Stade</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_match in fiche_matches %}
+            <tr>
+                <td>{{ fiche_match.id }}</td>
+                <td>{{ fiche_match.DateDebut ? fiche_match.DateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ fiche_match.Nom }}</td>
+                <td>{{ fiche_match.Stade }}</td>
+                <td>
+                    <a href="{{ path('fiche_match_show', {'id': fiche_match.id}) }}">show</a>
+                    <a href="{{ path('fiche_match_edit', {'id': fiche_match.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fiche_match_new') }}">Create new</a>
+{% endblock %}
