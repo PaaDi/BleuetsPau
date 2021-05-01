@@ -21,6 +21,8 @@ class FicheMatchType extends AbstractType
             ->add('EquipeDomicile')
             ->add('EquipeExterieure')
             ->add('status')
+            ->add('buteur')
+            ->add('score')
         ;
     }
 

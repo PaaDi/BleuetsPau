@@ -6,12 +6,14 @@ use App\Entity\FicheMatch;
 use App\Form\FicheMatchType;
 use App\Repository\FicheMatchRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/feuille_match")
+ * @IsGranted("ROLE_USER")
  */
 class FicheMatchController extends AbstractController
 {

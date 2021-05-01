@@ -2,18 +2,26 @@
 
 namespace App\Controller;
 
+use App\Entity\FicheMatch;
+use App\Repository\ArticleRepository;
+use App\Repository\FicheMatchRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
     /**
-     * @Route("/main", name="main")
+     * @Route("/", name="main")
      */
-    public function index(): Response
+    public function index(FicheMatchRepository $ficheMatchRepository, ArticleRepository $articleRepository): Response
     {
+        $ficheMatchs = $ficheMatchRepository -> findAll();
+        $Articles = $articleRepository -> findAll();
         return $this->render('main/index.html.twig', [
+            'fiche_matches' => $ficheMatchs,
+            'Articles' => $Articles,
             'controller_name' => 'MainController',
         ]);
     }

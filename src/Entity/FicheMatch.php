@@ -85,6 +85,16 @@ class FicheMatch
      */
     private $status;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $score;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $buteur;
+
     public function __construct()
     {
         $this->recevoirCartons = new ArrayCollection();
@@ -298,6 +308,30 @@ class FicheMatch
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    public function getScore(): ?string
+    {
+        return $this->score;
+    }
+
+    public function setScore(?string $score): self
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    public function getButeur(): ?string
+    {
+        return $this->buteur;
+    }
+
+    public function setButeur(?string $buteur): self
+    {
+        $this->buteur = $buteur;
+
+        return $this;
     }
 
 

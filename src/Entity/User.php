@@ -39,10 +39,6 @@ class User implements UserInterface
         return $this->id;
     }
 
-    public function getToto() : int {
-        return 0;
-    }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -94,17 +90,20 @@ class User implements UserInterface
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->getUsername();
-    }
-
     /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
      * @see UserInterface
      */
-    public function getSalt()
+    public function getSalt(): ?string
     {
-        // not needed when using the "bcrypt" algorithm in security.yaml
+        return null;
+    }
+
+    public function __toString()
+    {
+        return $this->getSalt();
     }
 
     /**

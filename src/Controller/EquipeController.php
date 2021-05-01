@@ -7,12 +7,14 @@ use App\Entity\Equipe;
 use App\Form\EquipeType;
 use App\Repository\EquipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/equipe")
+ * @IsGranted("ROLE_USER")
  */
 class EquipeController extends AbstractController
 {

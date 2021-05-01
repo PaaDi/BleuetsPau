@@ -66,6 +66,7 @@ section .heading h2{
     align-items: center;
     justify-content: center;
     height: 100%;
+    color: white;
 }
 
 section.hero{

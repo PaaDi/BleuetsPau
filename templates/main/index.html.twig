@@ -22,56 +22,61 @@
         <section class="clean-block clean-info dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info" style="text-align: center;">Actualités 2019</h2>
+                    <h2 class="text-info" style="text-align: center;">Actualités 2020</h2>
                     <p style="height: 27px; text-align: center;">Voici les derniers résultats de nos équipes séniors :</p>
-                    <div class="table-responsive" style="width: 1114px;margin: 0px;padding: 15px;height: 408px;">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th><br><strong>Date</strong><br><br></th>
-                                    <th><br><br>Division<br><br></th>
-                                    <th><br><strong>Equipe D.</strong><br><br></th>
-                                    <th>Score<br><br></th>
-                                    <th><br><strong>Equipe E.</strong><br><br></th>
-                                    <th><br><strong>Buteurs</strong><br><br></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="background-color: rgba(59,153,224,0.45);"><br>WE | 27 Oct 19<br><br></td>
-                                    <td><br>Coupe d'Aquitaine (tour 5)<br><br></td>
-                                    <td style="background-color: #ff857d;"><br>SENIORS A (R3)<br><br></td>
-                                    <td style="background-color: rgba(59,153,224,0.45);font-size: 18px;"><br>1 - 0<br><br></td>
-                                    <td><br>BIGANOS (D1)<br><br></td>
-                                    <td><br>Ben Mohamed Bo.<br><br></td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: rgba(59,153,224,0.45);"><br>WE | 27 Oct 19<br><br></td>
-                                    <td style="height: 106px;"><br>Coupe Dargains (tour 2)<br><br></td>
-                                    <td><br>HASPARREN B (D3)<br><br><br></td>
-                                    <td style="background-color: rgba(59,153,224,0.45);font-size: 18px;"><br>8 - 2<br><br><br></td>
-                                    <td style="background-color: #ff857d;height: 97px;"><br>SENIORS C (D4)<br></td>
-                                    <td><br>X, Drame M.<br></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="table" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th><img src="{{ asset('img/chronometer.png') }}" style="height: 40px; width: 40px;"/></th>
+                                <th>Nom du Match</th>
+                                <th>Equipe D.</th>
+                                <th><img src="{{ asset('img/tableau-de-score.png') }}" style="height: 40px; width: 40px;"/></th>
+                                <th>Equipe E.</th>
+                                <th>Buteur(s)</th>
+                                <th><img src="{{ asset('img/stade.png') }}" style="height: 40px; width: 40px;"/></th>
+                                <th><img src="{{ asset('img/settings.png') }}" style="height: 40px; width: 40px;"/></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for fiche_match in fiche_matches %}
+                            <tr>
+                                <td>{{ fiche_match.DateDebut ? fiche_match.DateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ fiche_match.Nom }}</td>
+                                <td>{{ fiche_match.EquipeDomicile }}</td>
+                                <td>{{ fiche_match.Score }}</td>
+                                <td>{{ fiche_match.EquipeExterieure }}</td>
+                                <td>{{ fiche_match.Buteur }}</td>
+                                <td>{{ fiche_match.Stade }}</td>
+                                <td>
+                                    <a href="{{ path('fiche_match_show', {'id': fiche_match.id}) }}">show</a>
+                                    <a href="{{ path('fiche_match_edit', {'id': fiche_match.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-md-6"><img class="img-thumbnail" src="img/stade.jpg"></div>
+                <div class="row align-items-center" style="margin-top: 100px">
+                {% set lastArticle = Articles | last %}
+                    <div class="col-md-6"><img class="img-thumbnail" src="{{ asset('uploads/images/' ~ lastArticle.image)}}"></div>
                     <div class="col-md-6">
-                        <h3>Notre nouveau stade&nbsp;</h3>
+                        <h3>{{ lastArticle.nom }}</h3>
                         <div class="getting-started-info">
-                            <p>Il est enfin là, le stade des Bleuets de Pau est maintenant synthétique.</p>
-                        </div><button class="btn btn-outline-primary btn-lg" type="button">En savoir plus</button></div>
+                            <p>{{ lastArticle.description | last}}</p>
+                        </div><a href="{{ path('article_show', {'id': lastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a></div>
+                        </div><a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg" type="button">Voir la liste complète</a></div>
                 </div>
             </div>
         </section>
         <section class="clean-block slider dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Plus qu'un club, une famille</h2>
-                    <p style="width: 450;">Une volonté commune de pratiquer le football, gagner et partager.&nbsp;<br></p>
+                    <h2 class="text-info" style="text-align: center;">Plus qu'un club, une famille</h2>
+                    <p style="width: 450; text-align: center;" >Une volonté commune de pratiquer le football, gagner et partager.&nbsp;<br></p>
                 </div>
                 <div class="carousel slide" data-ride="carousel" id="carousel-1">
                     <div class="carousel-inner" role="listbox">
@@ -92,12 +97,12 @@
         <section class="clean-block about-us" style="height: 1370px;">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info" style="font-size: 35px;">Restez connecté&nbsp;</h2>
-                    <p style="font-size: 19px;">Suivez toute l'actualité du club à travers nos différents réseaux sociaux.&nbsp;</p>
+                    <h2 class="text-info" style="font-size: 35px; text-align: center;">Restez connecté&nbsp;</h2>
+                    <p style="font-size: 19px; text-align: center;">Suivez toute l'actualité du club à travers nos différents réseaux sociaux.&nbsp;</p>
                 </div>
                 <div class="row justify-content-center" style="width: 944px;height: 953px;margin: 80px;">
                     <div class="col-sm-6 col-lg-4">
-                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/img/2019%20logo%20Bleuettes.jpg">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/2019%20logo%20Bleuettes.jpg">
                             <div class="card-body info" style="height: 150px;">
                                 <h4 class="card-title">BLEUETTES</h4>
                                 <p class="card-text">Section FEMININES.</p>
@@ -107,7 +112,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-4" style="width: 338px;height: 502px;">
-                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/img/logo.jpg">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/logo.jpg">
                             <div class="card-body info" style="height: 150px;">
                                 <h4 class="card-title">BLEUETS PAU</h4>
                                 <p class="card-text">Section FOOTBALL.</p>
@@ -117,7 +122,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-4 col-xl-4 offset-xl-0">
-                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/img/2019%20logo%20Bleuets%20Omnisport.jpg">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/2019%20logo%20Bleuets%20Omnisport.jpg">
                             <div class="card-body info" style="width: 281px;height: 150px;">
                                 <h4 class="card-title">OMNISPORT</h4>
                                 <p class="card-text">Section OMNISPORT.</p>

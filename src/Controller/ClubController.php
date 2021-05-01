@@ -6,12 +6,14 @@ use App\Entity\Club;
 use App\Form\ClubType;
 use App\Repository\ClubRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/club")
+ * @IsGranted("ROLE_USER")
  */
 class ClubController extends AbstractController
 {
