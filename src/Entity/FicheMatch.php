@@ -91,9 +91,14 @@ class FicheMatch
     private $score;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=400, nullable=true)
      */
-    private $buteur;
+    private $buteurDomicile;
+
+    /**
+     * @ORM\Column(type="string", length=400, nullable=true)
+     */
+    private $buteurExterieur;
 
     public function __construct()
     {
@@ -322,17 +327,31 @@ class FicheMatch
         return $this;
     }
 
-    public function getButeur(): ?string
+    public function getButeurDomicile(): ?string
     {
-        return $this->buteur;
+        return $this->buteurDomicile;
     }
 
-    public function setButeur(?string $buteur): self
+    public function setButeurDomicile(?string $buteurDomicile): self
     {
-        $this->buteur = $buteur;
+        $this->buteurDomicile = $buteurDomicile;
 
         return $this;
     }
+
+    public function getButeurExterieur(): ?string
+    {
+        return $this->buteurExterieur;
+    }
+
+    public function setButeurExterieur(?string $buteurExterieur): self
+    {
+        $this->buteurExterieur = $buteurExterieur;
+
+        return $this;
+    }
+
+
 
 
 }

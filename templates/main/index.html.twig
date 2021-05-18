@@ -28,13 +28,12 @@
                         <thead>
                             <tr>
                                 <th><img src="{{ asset('img/chronometer.png') }}" style="height: 40px; width: 40px;"/></th>
-                                <th>Nom du Match</th>
+                                <th><img src="{{ asset('img/trophy.png') }}" style="height: 40px; width: 40px;"/></th>
                                 <th>Equipe D.</th>
                                 <th><img src="{{ asset('img/tableau-de-score.png') }}" style="height: 40px; width: 40px;"/></th>
                                 <th>Equipe E.</th>
-                                <th>Buteur(s)</th>
                                 <th><img src="{{ asset('img/stade.png') }}" style="height: 40px; width: 40px;"/></th>
-                                <th><img src="{{ asset('img/settings.png') }}" style="height: 40px; width: 40px;"/></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,16 +44,19 @@
                                 <td>{{ fiche_match.EquipeDomicile }}</td>
                                 <td>{{ fiche_match.Score }}</td>
                                 <td>{{ fiche_match.EquipeExterieure }}</td>
-                                <td>{{ fiche_match.Buteur }}</td>
                                 <td>{{ fiche_match.Stade }}</td>
                                 <td>
-                                    <a href="{{ path('fiche_match_show', {'id': fiche_match.id}) }}">show</a>
-                                    <a href="{{ path('fiche_match_edit', {'id': fiche_match.id}) }}">edit</a>
+                                    <a href="{{ path('fiche_match_show', {'id': fiche_match.id}) }}">
+                                    <img src="{{ asset('img/les-yeux-ouverts.png') }}" style="height: 20px; width: 20px;"/>
+                                    </a>
+                                    <a href="{{ path('fiche_match_edit', {'id': fiche_match.id}) }}">
+                                    <img src="{{ asset('img/editer.png') }}" style="height: 20px; width: 20px;"/>
+                                    </a>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="5">no records found</td>
+                                <td colspan="5">Aucun match trouvé</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -62,14 +64,17 @@
                 </div>
                 <div class="row align-items-center" style="margin-top: 100px">
                 {% set lastArticle = Articles | last %}
-                    <div class="col-md-6"><img class="img-thumbnail" src="{{ asset('uploads/images/' ~ lastArticle.image)}}"></div>
-                    <div class="col-md-6">
+                    <div class="col-md-8"><img class="img-thumbnail"  src="{{ asset('uploads/images/' ~ lastArticle.image)}}">
+                    </div>
+                    <div class="col-md-4">
                         <h3>{{ lastArticle.nom }}</h3>
                         <div class="getting-started-info">
                             <p>{{ lastArticle.description | last}}</p>
-                        </div><a href="{{ path('article_show', {'id': lastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a></div>
-                        </div><a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg" type="button">Voir la liste complète</a></div>
-                </div>
+                        </div>
+                        <a href="{{ path('article_show', {'id': lastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a>
+                        <a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg" type="button">Voir la liste complète</a>
+                        
+                    </div>
             </div>
         </section>
         <section class="clean-block slider dark">

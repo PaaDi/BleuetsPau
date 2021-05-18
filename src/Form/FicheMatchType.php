@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\FicheMatch;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,7 +13,9 @@ class FicheMatchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('DateDebut')
+            ->add('DateDebut', DateTimeType::class, [
+                'widget' => 'single_text',
+            ])
             ->add('Nom')
             ->add('Stade')
             ->add('ArbitrePrincipal')
@@ -21,7 +24,8 @@ class FicheMatchType extends AbstractType
             ->add('EquipeDomicile')
             ->add('EquipeExterieure')
             ->add('status')
-            ->add('buteur')
+            ->add('buteurDomicile')
+            ->add('buteurExterieur')
             ->add('score')
         ;
     }
