@@ -1,6 +1,7 @@
 /* GENERAL */
 body{
     font-family: 'Lato', sans-serif;
+    background: #EEF0F8;
 }
 h1,h2,h3,h4,h5,h6{
     font-weight: bold;
@@ -443,3 +444,11 @@ footer h6{
     font-weight: normal;
 }
 
+.nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+.nav ul li {
+    display: inline-block;
+}

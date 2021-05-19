@@ -1,13 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}Edit FicheMatch{% endblock %}
 
 {% block body %}
-    <h1 style="margin-top: 120px;">Edit FicheMatch</h1>
-
-    {{ include('fiche_match/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('fiche_match_index') }}">back to list</a>
-
-    {{ include('fiche_match/_delete_form.html.twig') }}
+    <div class="container">
+        <div class="card card-custom">
+            <div class="card-header">
+                <h1 style="margin-top: 120px; text-align: center">Modifier la fiche du match</h1>
+            </div>
+            <div class="card-body">
+                {{ include('fiche_match/_form.html.twig', {'button_label': 'Update'}) }}
+                <a href="{{ path('fiche_match_index') }}">back to list</a>
+                {{ include('fiche_match/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
