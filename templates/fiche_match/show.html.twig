@@ -3,8 +3,23 @@
 {% block title %}FicheMatch{% endblock %}
 
 {% block body %}
-    <h1 style="margin-top: 120px;">FicheMatch</h1>
 
+    <h1 style="margin-top: 120px;">FicheMatch</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">{{ fiche_match.Nom }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-center">
+                <div id="sparkline-1"><canvas width="240" height="70" style="width: 240px; height: 70px;"></canvas></div>
+            </div>
+            <div class="col-4 text-center">
+            </div>
+            <div class="col-4 text-center">
+                <div id="sparkline-3"><canvas width="240" height="70" style="width: 240px; height: 70px;"></canvas></div>
+            </div>
+        </div>
+    </div>
     <table class="table">
         <tbody>
             <tr>
