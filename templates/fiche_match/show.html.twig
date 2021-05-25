@@ -1,49 +1,102 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}FicheMatch{% endblock %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/matchStyle.css') }}" />
+{% endblock %}
 {% block body %}
-
-    <h1 style="margin-top: 120px;">FicheMatch</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">{{ fiche_match.Nom }}</div>
+        <div class="match-container">
+            <div class="match">
+                <div class="match-header">
+                    <div class="match-title">{{ fiche_match.Nom }}</div>
+                    <div class="match-actions">
+                        <strong>{{ fiche_match.Stade }}</strong>
+                    </div>
+                </div>
+                <div class="match-content">
+                    <div class="column">
+                        <div class="team team--home">
+                            <div class="team-logo">
+                                <img src="{{ asset("uploads/images/"~fiche_match.equipeDomicile.image) }}" />
+                            </div>
+                            <h2 class="team-name">{{ fiche_match.equipeDomicile.nom }}</h2>
+                            {% if fiche_match.buteurExterieur %}
+                            <div><i class="fa fa-soccer-ball-o"></i> {{ fiche_match.buteurDomicile }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="match-details">
+                            <div class="match-date">
+                                <strong>{{ fiche_match.dateDebut|date('d-m-Y H:i') }}</strong>
+                            </div>
+                            <div class="match-score">
+                                <span class="match-score-number">{{ fiche_match.score }}</span>
+                            </div>
+                            <div class="match-referee">
+                                <span></span>Arbitres:<br/>
+                                <strong>{{ fiche_match.arbitrePrincipal }}</strong><br>
+                                {{ fiche_match.arbitreAssistant1 }}<br>
+                                {{ fiche_match.arbitreAssistant2 }}
+                            </div>
+                            <span class="match-bet-place font-weight-bold">{{ fiche_match.status.libelle }}</span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="team team--away">
+                            <div class="team-logo">
+                                <img src="{{ asset("uploads/images/"~fiche_match.equipeExterieure.image) }}" />
+                            </div>
+                            <h2 class="team-name">{{ fiche_match.equipeExterieure.nom }}</h2>
+                            {% if fiche_match.buteurExterieur %}
+                            <div><i class="fa fa-soccer-ball-o"></i> {{ fiche_match.buteurExterieur }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-4 text-center">
-                <div id="sparkline-1"><canvas width="240" height="70" style="width: 240px; height: 70px;"></canvas></div>
-            </div>
-            <div class="col-4 text-center">
-            </div>
-            <div class="col-4 text-center">
-                <div id="sparkline-3"><canvas width="240" height="70" style="width: 240px; height: 70px;"></canvas></div>
-            </div>
-        </div>
-    </div>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ fiche_match.id }}</td>
-            </tr>
-            <tr>
-                <th>DateDebut</th>
-                <td>{{ fiche_match.DateDebut ? fiche_match.DateDebut|date('d-m-Y H:i') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ fiche_match.Nom }}</td>
-            </tr>
-            <tr>
-                <th>Stade</th>
-                <td>{{ fiche_match.Stade }}</td>
-            </tr>
-        </tbody>
-    </table>
+{#    <h1 style="margin-top: 120px;">FicheMatch</h1>#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="col-md-12 text-center">{{ fiche_match.Nom }}</div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-4 text-center">#}
+{#                <div id="sparkline-1"><canvas width="240" height="70" style="width: 240px; height: 70px;"></canvas></div>#}
+{#            </div>#}
+{#            <div class="col-4 text-center">#}
+{#            </div>#}
+{#            <div class="col-4 text-center">#}
+{#                <div id="sparkline-3"><canvas width="240" height="70" style="width: 240px; height: 70px;"></canvas></div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <table class="table">#}
+{#        <tbody>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <td>{{ fiche_match.id }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>DateDebut</th>#}
+{#                <td>{{ fiche_match.DateDebut ? fiche_match.DateDebut|date('d-m-Y H:i') : '' }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Nom</th>#}
+{#                <td>{{ fiche_match.Nom }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Stade</th>#}
+{#                <td>{{ fiche_match.Stade }}</td>#}
+{#            </tr>#}
+{#        </tbody>#}
+{#    </table>#}
 
-    <a href="{{ path('fiche_match_index') }}">back to list</a>
+{#    <a href="{{ path('fiche_match_index') }}">back to list</a>#}
 
-    <a href="{{ path('fiche_match_edit', {'id': fiche_match.id}) }}">edit</a>
+{#    <a href="{{ path('fiche_match_edit', {'id': fiche_match.id}) }}">edit</a>#}
 
-    {{ include('fiche_match/_delete_form.html.twig') }}
+{#    {{ include('fiche_match/_delete_form.html.twig') }}#}
 {% endblock %}

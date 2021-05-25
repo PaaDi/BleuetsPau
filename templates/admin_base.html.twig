@@ -33,9 +33,6 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ path('main') }}" class="nav-link">Page d'accueil</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
         </ul>
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
@@ -51,9 +48,9 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="{{ path('admin_panel') }}" class="brand-link">
             <img src="{{ asset('img/logo.jpg') }}" alt="Admin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">Adminnistration</span>
+            <span class="brand-text font-weight-light">Administration</span>
         </a>
 
         <div class="sidebar">
@@ -69,28 +66,73 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="{{ path('equipe_index') }}" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                Équipes
+                                Equipes
+                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ path('equipe_new') }}" class="nav-link">
+                                    <i class="fa fa-plus mr-2"></i>
+                                    <p>Ajouter une équipe</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('equipe_index') }}" class="nav-link">
+                                    <i class="fa fa-list mr-2"></i>
+                                    <p>Liste des équipes</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('fiche_match_index') }}" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-futbol"></i>
                             <p>
                                 Fiches Matchs
+                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ path('fiche_match_new') }}" class="nav-link">
+                                    <i class="fa fa-plus mr-2"></i>
+                                    <p>Ajouter une fiche</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('fiche_match_index') }}" class="nav-link">
+                                    <i class="fa fa-list mr-2"></i>
+                                    <p>Liste des fiches</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('article_index') }}" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-newspaper"></i>
                             <p>
                                 Articles
+                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ path('article_new') }}" class="nav-link">
+                                    <i class="fa fa-plus mr-2"></i>
+                                    <p>Ajouter un article</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('article_index') }}" class="nav-link">
+                                    <i class="fa fa-list mr-2"></i>
+                                    <p>Liste des articles</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

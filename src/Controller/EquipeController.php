@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Datatables\EquipeDatatable;
+use Sg\DatatablesBundle\Datatable\DatatableFactory;
+use Sg\DatatablesBundle\Response\DatatableResponse;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\Equipe;
 use App\Form\EquipeType;
@@ -23,6 +26,7 @@ class EquipeController extends AbstractController
      */
     public function index(EquipeRepository $equipeRepository): Response
     {
+
         return $this->render('equipe/index.html.twig', [
             'equipes' => $equipeRepository->findAll(),
         ]);
