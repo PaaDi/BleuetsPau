@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\FicheMatch;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -27,6 +28,11 @@ class FicheMatchType extends AbstractType
             ->add('buteurDomicile')
             ->add('buteurExterieur')
             ->add('score')
+            ->add("Sauvegarder", SubmitType::class, [
+                "attr"  =>  [
+                    "class" =>  "btn btn-info"
+                ]
+            ])
         ;
     }
 

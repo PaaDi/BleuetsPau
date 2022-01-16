@@ -20,7 +20,6 @@ class ArticleType extends AbstractType
                 'required'=> false,
                 ])
             ->add('description')
-            ->add('date_creation')
             ->add('image')
             ->add('contenu')
         ;

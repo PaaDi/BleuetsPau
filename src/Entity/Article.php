@@ -37,6 +37,11 @@ class Article
      */
     private $image;
 
+    public function __construct()
+    {
+        $this->date_creation = new \DateTime();
+    }
+
     /**
      * @ORM\Column(type="text")
      */

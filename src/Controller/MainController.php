@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\FicheMatch;
 use App\Repository\ArticleRepository;
 use App\Repository\FicheMatchRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +24,17 @@ class MainController extends AbstractController
             'fiche_matches' => $ficheMatchs,
             'Articles' => $Articles,
             'controller_name' => 'MainController',
+        ]);
+    }
+
+    /**
+     * @Route("/admin", name="admin_panel")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function adminPanel()
+    {
+        return $this->render("admin/admin_home.html.twig", [
+
         ]);
     }
 }

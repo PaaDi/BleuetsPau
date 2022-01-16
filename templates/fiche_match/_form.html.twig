@@ -1,4 +1,45 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="card-body">
+    {{ form_row(form.Nom) }}
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.EquipeDomicile) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.EquipeExterieure) }}
+        </div>
+    </div>
+    {{ form_row(form.score, {'attr': {'class':'text-center font-weight-bold'} }) }}
+    {{ form_row(form.status) }}
+    {{ form_row(form.DateDebut) }}
+    <label class="mt-2">Arbitres:</label>
+    <div class="row">
+        <div class="col-4">
+            {{ form_row(form.ArbitrePrincipal) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.ArbitreAssistant1) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.ArbitreAssistant2) }}
+        </div>
+    </div>
+    {{ form_row(form.Stade) }}
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.buteurDomicile) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.buteurExterieur) }}
+        </div>
+    </div>
+
+</div>
+<div class="card-footer">
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.Sauvegarder) }}
+        </div>
+    </div>
+</div>
 {{ form_end(form) }}

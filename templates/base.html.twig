@@ -9,14 +9,13 @@
             {#{{ encore_entry_link_tags('app') }}#}
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>Bleuets de Pau | Club de Football du 64</title>
-            <link rel="icon" type="image/png" href="{{ asset('img/logo16.jpg') }}" />
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">            <link rel="icon" type="image/png" href="{{ asset('img/logo16.jpg') }}" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
             <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
             <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
             <link href="{{ asset('css/SlideshowCarousel-fade-with-animated-captions-and-touch-swipe.css') }}" type="text/css" rel="stylesheet">
             <link href="{{ asset('css/Carousel_Image_Slider.css') }}" type="text/css" rel="stylesheet">
-            <link href="{{ asset('.css') }}" type="text/css" rel="stylesheet">
+{#            <link href="{{ asset('.css') }}" type="text/css" rel="stylesheet">#}
 
         {% endblock %}
 
@@ -29,136 +28,141 @@
         {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-            <div class="container" style="margin-left: 2px">
-                <a href="{{ path('main') }}"><img class="swing animated" src="{{ asset('img/logo.jpg') }}" style="height: 110px;width: 110px; margin: -13px;margin-left: 5px;padding: 0px;"></a>
-                <a class="navbar-brand logo" href="index.php" style="margin: 29px;height: 30px;width: 184px;font-size: 18px;font-family: Montserrat, sans-serif;color: rgba(35,134,190,0.9);filter: blur(0px) contrast(87%) grayscale(0%) hue-rotate(0deg);opacity: 1;">Bleuets de Pau</a>
-                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
-                    <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navcol-1" style="font-size: 16px;margin: 0px; margin-left: 2px; margin-top: 15px;">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" data-bs-hover-animate="pulse" href="#" style="font-size: 12px;">SENIORS</a>
-                            <div class="dropdown-menu" role="menu" style="padding: 20px;">
-                                <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">SENIORS A (R3)</a>
-                                <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">SENIORS B (D2)</a>
-                                <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">SENIORS C (D4)</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" data-bs-hover-animate="pulse" href="#" style="font-size: 12px;">JEUNES</a>
+        <div class="wrapper">
+            <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div class="container" style="margin-left: 2px">
+                    <a href="{{ path('main') }}"><img class="swing animated" src="{{ asset('img/logo.jpg') }}" style="height: 110px;width: 110px; margin: -13px;margin-left: 5px;padding: 0px;"></a>
+                    <a class="navbar-brand logo" href="{{ path('main') }}" style="margin: 29px;height: 30px;width: 184px;font-size: 18px;font-family: Montserrat, sans-serif;color: rgba(35,134,190,0.9);filter: blur(0px) contrast(87%) grayscale(0%) hue-rotate(0deg);opacity: 1;">Bleuets de Pau</a>
+                    <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
+                        <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navcol-1" style="font-size: 16px;margin: 0px; margin-left: 2px; margin-top: 15px;">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" data-bs-hover-animate="pulse" href="#" style="font-size: 12px;">SENIORS</a>
                                 <div class="dropdown-menu" role="menu" style="padding: 20px;">
-                                <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">U-16</a>
-                                <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">U-15</a>
-                                <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">U-13</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" data-bs-hover-animate="pulse" href="#" style="font-size: 12px;">MEMBRE</a>
-                                <div class="dropdown-menu" role="menu" style="padding: 20px;">
-                                <a class="dropdown-item" role="presentation" href="inscription.php" style="font-size: 12px;">INSCRIPTION</a>
-                                <a class="dropdown-item" role="presentation" href="connexion.php" style="font-size: 12px;">CONNEXION</a>
-                            </div>
-                        </li>                   
-                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" data-bs-hover-animate="pulse" href="#" style="font-size: 12px;">LIENS</a>
-                            <div class="dropdown-menu" role="menu" style="padding: 20px;">
-                                <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="contact.php" style="font-size: 12px;;width: 330px;height: 35px;">CONTACT</a>
-                                <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="https://bleuetspau.footeo.com/"style="font-size: 12px;;" target="_blank">FOOTEO</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="https://footpyr64.fff.fr/" style="font-size: 12px;"target="_blank">LIGUE NOUVELLE-AQUITAINE</a>
-                                <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="https://lfna.fff.fr/" style="font-size: 12px;" target="_blank">DISTRICT 64</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="lestade.php" style="font-size: 12px;">NOTRE STADE</a>
-                                <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="partenaires.php" style="font-size: 12px;"> NOS PARTENAIRES</a>
-                            </div>
-                        </li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="http://bleuetspau.free.fr/forum/" target="_blank" style="font-size: 12px;">Forum</a></li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item">
-                            <a class="nav-link" style="font-size: 12px;color:red;" href="#">ADMIN</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div> 
-                <div class="collapse navbar-collapse swing animated" id="navcol-1" style="height: 52px;width: 179px;margin: -65px; margin-top: 15px;margin-left: 75px; ">
-                    <ul class="nav navbar-nav ml-auto heroMedia">
-                        <li class="nav-item" role="presentation" style="height: 50px;width: 50px;">
-                            <a href="https://www.instagram.com/bleuetspau.64/" target=_blank><img src="{{ asset('img/hiclipart.com-id_ithpn.png') }}" style="height: 47px;width: 47px;padding: 0px;"></a>
-                        </li>
-                        <li class="nav-item" role="presentation" style="height: 50px; width: 50px;">
-                            <a href="https://twitter.com/bleuetspau" target=_blank><img src="{{ asset('img/twitter-bird-transparent-background-19.png') }}" style="width: 50px;height: 50px;"></a>
-                        </li>
-                        <li class="nav-item" role="presentation" style="height: 50px; width: 50px;">
-                            <a href="https://www.facebook.com/bleuetspau" target=_blank><img src="{{ asset('img/clipart1842269.png') }}" style="width: 37px;height: 37px;margin: 5px;"></a>
+                                    <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">SENIORS A (R3)</a>
+                                    <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">SENIORS B (D2)</a>
+                                    <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">SENIORS C (D4)</a>
+                                </div>
                             </li>
-                        <li class="nav-item" role="presentation" style="height: 50px; width: 50px;">
-                            <a href="https://www.youtube.com/user/bleuetspau" target=_blank><img src="{{ asset('img/kisspng-youtube-red-logo-computer-icons-youtube-5abe39fee829f5.389212271522416126951.png') }}" style="width: 40px;height: 45px;"></a>
-                        </li>
-                        {% if is_granted('ROLE_USER') %}                       
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <p>{{ app.user.username }}</p>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        {% block body %}
-        {% endblock %}
-    </body>
-    <footer>
-        <footer class="page-footer dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h5>Nous rejoindre</h5>
-                    <ul>
-                        <li><a href="#">Licences</a></li>
-                        <li><a href="#">Bénévolat</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>A propos de nous</h5>
-                    <ul>
-                        <li><a href="lestade.html">Le stade</a></li>
-                        <li><a href="#">Contactez nous</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Nos équipes</h5>
-                    <ul>
-                        <li><a href="#">Seniors</a></li>
-                        <li><a href="#">Jeunes</a></li>
-                        <li><a href="#">Féminines</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                        <h5>Nos partenaires</h5>
-                        <ul>
-                            <li><a href="https://zingueur-couvreur.com/" target="_blank">Entreprise TORRES</a></li>
-                            <li><a href="https://zingueur-couvreur.com/" target="_blank">Les Façadiers du Béarn</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" data-bs-hover-animate="pulse" href="#" style="font-size: 12px;">JEUNES</a>
+                                <div class="dropdown-menu" role="menu" style="padding: 20px;">
+                                    <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">U-16</a>
+                                    <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">U-15</a>
+                                    <a class="dropdown-item" role="presentation" href="#" style="font-size: 12px;">U-13</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" data-bs-hover-animate="pulse" href="#" style="font-size: 12px;">MEMBRE</a>
+                                <div class="dropdown-menu" role="menu" style="padding: 20px;">
+                                    <a class="dropdown-item" role="presentation" href="inscription.php" style="font-size: 12px;">INSCRIPTION</a>
+                                    <a class="dropdown-item" role="presentation" href="connexion.php" style="font-size: 12px;">CONNEXION</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" data-bs-hover-animate="pulse" href="#" style="font-size: 12px;">LIENS</a>
+                                <div class="dropdown-menu" role="menu" style="padding: 20px;">
+                                    <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="contact.php" style="font-size: 12px;;width: 330px;height: 35px;">CONTACT</a>
+                                    <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="https://bleuetspau.footeo.com/"style="font-size: 12px;;" target="_blank">FOOTEO</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="https://footpyr64.fff.fr/" style="font-size: 12px;"target="_blank">LIGUE NOUVELLE-AQUITAINE</a>
+                                    <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="https://lfna.fff.fr/" style="font-size: 12px;" target="_blank">DISTRICT 64</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="lestade.php" style="font-size: 12px;">NOTRE STADE</a>
+                                    <a class="dropdown-item" role="presentation" data-bs-hover-animate="pulse" href="partenaires.php" style="font-size: 12px;"> NOS PARTENAIRES</a>
+                                </div>
+                            </li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="http://bleuetspau.free.fr/forum/" target="_blank" style="font-size: 12px;">Forum</a></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="nav-item">
+                                    <a class="nav-link" style="font-size: 12px;color:red;" href="{{ path('admin_panel') }}">ADMIN</a>
+                                </li>
+                            {% endif %}
                         </ul>
+                    </div>
+                    <div class="collapse navbar-collapse swing animated" id="navcol-1" style="height: 52px;width: 179px;margin: -65px; margin-top: 15px;margin-left: 75px; ">
+                        <ul class="nav navbar-nav ml-auto heroMedia">
+                            <li class="nav-item" role="presentation" style="height: 50px;width: 50px;">
+                                <a href="https://www.instagram.com/bleuetspau.64/" target=_blank><img src="{{ asset('img/hiclipart.com-id_ithpn.png') }}" style="height: 47px;width: 47px;padding: 0px;"></a>
+                            </li>
+                            <li class="nav-item" role="presentation" style="height: 50px; width: 50px;">
+                                <a href="https://twitter.com/bleuetspau" target=_blank><img src="{{ asset('img/twitter-bird-transparent-background-19.png') }}" style="width: 50px;height: 50px;"></a>
+                            </li>
+                            <li class="nav-item" role="presentation" style="height: 50px; width: 50px;">
+                                <a href="https://www.facebook.com/bleuetspau" target=_blank><img src="{{ asset('img/clipart1842269.png') }}" style="width: 37px;height: 37px;margin: 5px;"></a>
+                            </li>
+                            <li class="nav-item" role="presentation" style="height: 50px; width: 50px;">
+                                <a href="https://www.youtube.com/user/bleuetspau" target=_blank><img src="{{ asset('img/kisspng-youtube-red-logo-computer-icons-youtube-5abe39fee829f5.389212271522416126951.png') }}" style="width: 40px;height: 45px;"></a>
+                            </li>
+                            {% if is_granted('ROLE_USER') %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                                </li>
+                                <li class="nav-item">
+                                    <p>{{ app.user.username }}</p>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    {% block body %}
+                    {% endblock %}
                 </div>
             </div>
+
+{#            <footer class="main-footer">#}
+{#                <div class="container">#}
+{#                    <div class="row">#}
+{#                        <div class="col-sm-3">#}
+{#                            <h5>Nous rejoindre</h5>#}
+{#                            <ul>#}
+{#                                <li><a href="#">Licences</a></li>#}
+{#                                <li><a href="#">Bénévolat</a></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-sm-3">#}
+{#                            <h5>A propos de nous</h5>#}
+{#                            <ul>#}
+{#                                <li><a href="lestade.html">Le stade</a></li>#}
+{#                                <li><a href="#">Contactez nous</a></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-sm-3">#}
+{#                            <h5>Nos équipes</h5>#}
+{#                            <ul>#}
+{#                                <li><a href="#">Seniors</a></li>#}
+{#                                <li><a href="#">Jeunes</a></li>#}
+{#                                <li><a href="#">Féminines</a></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-sm-3">#}
+{#                            <h5>Nos partenaires</h5>#}
+{#                            <ul>#}
+{#                                <li><a href="https://zingueur-couvreur.com/" target="_blank">Entreprise TORRES</a></li>#}
+{#                                <li><a href="https://zingueur-couvreur.com/" target="_blank">Les Façadiers du Béarn</a></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="footer-copyright">#}
+{#                    <p>© 2019 Copyright Bleuets de Pau - <a href="http://melvinkr.fr/" target="_blank">Melvin Krr</a></p>#}
+{#                </div>#}
+{#            </footer>#}
         </div>
-        <div class="footer-copyright">
-            <p>© 2019 Copyright Bleuets de Pau - <a href="http://melvinkr.fr/" target="_blank">Melvin Krr</a></p>
-        </div>
-    </footer>
-    
-    <!-- SCRIPT -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="assets/js/smoothproducts.min.js"></script>
-    <script src="assets/js/theme.js"></script>
-    </footer>
+    {% block js %}
+        <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+{#        <script src="assets/js/smoothproducts.min.js"></script>#}
+{#        <script src="assets/js/theme.js"></script>#}
+    {% endblock %}
+    </body>
 </html>

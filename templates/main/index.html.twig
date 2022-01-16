@@ -38,12 +38,14 @@
                         </thead>
                         <tbody>
                         {% for fiche_match in fiche_matches %}
+                            {% set EquipeDomicileLogo = "/uploads/images/"~fiche_match.EquipeDomicile.image %}
+                            {% set EquipeExterieureLogo = "/uploads/images/"~fiche_match.EquipeExterieure.image %}
                             <tr>
                                 <td>{{ fiche_match.DateDebut ? fiche_match.DateDebut|date('Y-m-d H:i:s') : '' }}</td>
                                 <td>{{ fiche_match.Nom }}</td>
-                                <td>{{ fiche_match.EquipeDomicile }}</td>
+                                <td><img src="{{ EquipeDomicileLogo}}" style="max-height: 50px; max-width: 50px"></td>
                                 <td>{{ fiche_match.Score }}</td>
-                                <td>{{ fiche_match.EquipeExterieure }}</td>
+                                <td><img src="{{ EquipeExterieureLogo }}" style="max-height: 50px; max-width: 50px" ></td>
                                 <td>{{ fiche_match.Stade }}</td>
                                 <td>
                                     <a href="{{ path('fiche_match_show', {'id': fiche_match.id}) }}">
@@ -63,19 +65,33 @@
                     </table>
                 </div>
                 <div class="row align-items-center" style="margin-top: 100px">
-                {% set lastArticle = Articles | last %}
+                    {% set beforeLastArticle = Articles[(Articles|length)-2] %}
+                    <div class="col-md-8"><img class="img-thumbnail"  src="{{ asset('uploads/images/' ~ beforeLastArticle.image)}}">
+                    </div>
+                    <div class="col-md-4">
+                        <h3>{{ beforeLastArticle.nom }}</h3>
+                        <div class="getting-started-info">
+                            <p>{{ beforeLastArticle.description|length > 30 ? beforeLastArticle.description|slice(0, 30) ~ '...' : beforeLastArticle.description  }}</p>
+                        </div>
+                        <a href="{{ path('article_show', {'id': beforeLastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a>
+                        <a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg mt-2" type="button">Voir la liste complète</a>
+                    </div>
+                </div>
+                <div class="row align-items-center" style="margin-top: 100px">
+                    {% set lastArticle = Articles | last %}
                     <div class="col-md-8"><img class="img-thumbnail"  src="{{ asset('uploads/images/' ~ lastArticle.image)}}">
                     </div>
                     <div class="col-md-4">
                         <h3>{{ lastArticle.nom }}</h3>
                         <div class="getting-started-info">
-                            <p>{{ lastArticle.description | last}}</p>
+                            <p>{{ lastArticle.description|length > 30 ? lastArticle.description|slice(0, 30) ~ '...' : lastArticle.description  }}</p>
                         </div>
                         <a href="{{ path('article_show', {'id': lastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a>
-                        <a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg" type="button">Voir la liste complète</a>
+                        <a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg mt-2" type="button">Voir la liste complète</a>
                         
                     </div>
-            </div>
+                </div>
+        </div>
         </section>
         <section class="clean-block slider dark">
             <div class="container">
