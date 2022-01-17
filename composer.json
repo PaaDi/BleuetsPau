@@ -14,6 +14,7 @@
         "doctrine/orm": "^2.8",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.1",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.2.*",
         "symfony/console": "5.2.*",
         "symfony/dotenv": "5.2.*",
@@ -27,6 +28,7 @@
         "symfony/mime": "5.2.*",
         "symfony/monolog-bundle": "^3.1",
         "symfony/notifier": "5.2.*",
+        "symfony/orm-pack": "^2.2",
         "symfony/process": "5.2.*",
         "symfony/property-access": "5.2.*",
         "symfony/property-info": "5.2.*",
@@ -58,7 +60,11 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "symfony/flex": true
+        }
     },
     "autoload": {
         "psr-4": {
