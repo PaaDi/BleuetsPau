@@ -1,159 +1,193 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- MENU -->
-    <main class="page landing-page">
-        <section class="clean-block clean-hero hero">
-            <img src="{{ asset('img/equipe.jpg') }}" class="heroBackground" />
-            <div class="heroBackgroundBlueFilter">
-            </div>
-            <div class="heroContent">
-                <h2 style="font-size: 80px;">
-                	<strong>Bleuets de Pau</strong>
-                </h2>
-                <p>
-                    <br><strong>Section FOOTBALL - Association depuis 1920</strong><br><br><br>
-                </p>
-                <a href="contact.php">
-                    <button class="btn btn-outline-light btn-lg" type="button">Contactez-nous</button>
-                </a>
-            </div>
-        </section>
-        <section class="clean-block clean-info dark">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info" style="text-align: center;">Actualités 2020</h2>
-                    <p style="height: 27px; text-align: center;">Voici les derniers résultats de nos équipes séniors :</p>
-                    <table class="table" style="text-align: center;">
-                        <thead>
-                            <tr>
-                                <th><img src="{{ asset('img/chronometer.png') }}" style="height: 40px; width: 40px;"/></th>
-                                <th><img src="{{ asset('img/trophy.png') }}" style="height: 40px; width: 40px;"/></th>
-                                <th>Equipe D.</th>
-                                <th><img src="{{ asset('img/tableau-de-score.png') }}" style="height: 40px; width: 40px;"/></th>
-                                <th>Equipe E.</th>
-                                <th><img src="{{ asset('img/stade.png') }}" style="height: 40px; width: 40px;"/></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for fiche_match in fiche_matches %}
-                            {% set EquipeDomicileLogo = "/uploads/images/"~fiche_match.EquipeDomicile.image %}
-                            {% set EquipeExterieureLogo = "/uploads/images/"~fiche_match.EquipeExterieure.image %}
-                            <tr>
-                                <td>{{ fiche_match.DateDebut ? fiche_match.DateDebut|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ fiche_match.Nom }}</td>
-                                <td><img src="{{ EquipeDomicileLogo}}" style="max-height: 50px; max-width: 50px"></td>
-                                <td>{{ fiche_match.Score }}</td>
-                                <td><img src="{{ EquipeExterieureLogo }}" style="max-height: 50px; max-width: 50px" ></td>
-                                <td>{{ fiche_match.Stade }}</td>
-                                <td>
-                                    <a href="{{ path('fiche_match_show', {'id': fiche_match.id}) }}">
-                                    <img src="{{ asset('img/les-yeux-ouverts.png') }}" style="height: 20px; width: 20px;"/>
-                                    </a>
-                                    <a href="{{ path('fiche_match_edit', {'id': fiche_match.id}) }}">
-                                    <img src="{{ asset('img/editer.png') }}" style="height: 20px; width: 20px;"/>
-                                    </a>
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="5">Aucun match trouvé</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="row align-items-center" style="margin-top: 100px">
-                    {% set beforeLastArticle = Articles[(Articles|length)-2] %}
-                    <div class="col-md-8"><img class="img-thumbnail"  src="{{ asset('uploads/images/' ~ beforeLastArticle.image)}}">
-                    </div>
-                    <div class="col-md-4">
-                        <h3>{{ beforeLastArticle.nom }}</h3>
-                        <div class="getting-started-info">
-                            <p>{{ beforeLastArticle.description|length > 30 ? beforeLastArticle.description|slice(0, 30) ~ '...' : beforeLastArticle.description  }}</p>
-                        </div>
-                        <a href="{{ path('article_show', {'id': beforeLastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a>
-                        <a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg mt-2" type="button">Voir la liste complète</a>
-                    </div>
-                </div>
-                <div class="row align-items-center" style="margin-top: 100px">
-                    {% set lastArticle = Articles | last %}
-                    <div class="col-md-8"><img class="img-thumbnail"  src="{{ asset('uploads/images/' ~ lastArticle.image)}}">
-                    </div>
-                    <div class="col-md-4">
-                        <h3>{{ lastArticle.nom }}</h3>
-                        <div class="getting-started-info">
-                            <p>{{ lastArticle.description|length > 30 ? lastArticle.description|slice(0, 30) ~ '...' : lastArticle.description  }}</p>
-                        </div>
-                        <a href="{{ path('article_show', {'id': lastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a>
-                        <a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg mt-2" type="button">Voir la liste complète</a>
-                        
-                    </div>
-                </div>
-        </div>
-        </section>
-        <section class="clean-block slider dark">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info" style="text-align: center;">Plus qu'un club, une famille</h2>
-                    <p style="width: 450; text-align: center;" >Une volonté commune de pratiquer le football, gagner et partager.&nbsp;<br></p>
-                </div>
-                <div class="carousel slide" data-ride="carousel" id="carousel-1">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active"><img class="w-100 d-block" src="img/training.jpg" alt="Slide Image"></div>
-                        <div class="carousel-item"><img class="w-100 d-block" src="img/vestiaires.jpg" alt="Slide Image"></div>
-                        <div class="carousel-item"><img class="w-100 d-block" src="img/senioars.jpg" alt="Slide Image"></div>
-                    </div>
-                    <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button"
-                            data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-1" data-slide-to="1"></li>
-                        <li data-target="#carousel-1" data-slide-to="2"></li>
-                    </ol>
-                </div>
-            </div>
-        </section>
-        <section class="clean-block about-us" style="height: 1370px;">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info" style="font-size: 35px; text-align: center;">Restez connecté&nbsp;</h2>
-                    <p style="font-size: 19px; text-align: center;">Suivez toute l'actualité du club à travers nos différents réseaux sociaux.&nbsp;</p>
-                </div>
-                <div class="row justify-content-center" style="width: 944px;height: 953px;margin: 80px;">
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/2019%20logo%20Bleuettes.jpg">
-                            <div class="card-body info" style="height: 150px;">
-                                <h4 class="card-title">BLEUETTES</h4>
-                                <p class="card-text">Section FEMININES.</p>
-                                <div class="icons"><a href="https://www.facebook.com/bleuetspau" target="_blank"><i class="icon-social-facebook"></i></a><a href="https://www.instagram.com/bleuetspau.64/" target="_blank"><i class="icon-social-instagram"></i></a><a href="https://twitter.com/bleuetspau?fbclid=IwAR2IGdpbxeFJuSUXITBEYeRn2fyYPoEFgM3Evxoymz62F3BH9iKh_PZi4no"
-                                        target="_blank"><i class="icon-social-twitter"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4" style="width: 338px;height: 502px;">
-                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/logo.jpg">
-                            <div class="card-body info" style="height: 150px;">
-                                <h4 class="card-title">BLEUETS PAU</h4>
-                                <p class="card-text">Section FOOTBALL.</p>
-                                <div class="icons"><a href="https://www.facebook.com/bleuetspau" target="_blank"><i class="icon-social-facebook"></i></a><a href="https://www.instagram.com/bleuetspau.64/" target="_blank"><i class="icon-social-instagram"></i></a><a href="https://twitter.com/bleuetspau?fbclid=IwAR2IGdpbxeFJuSUXITBEYeRn2fyYPoEFgM3Evxoymz62F3BH9iKh_PZi4no"
-                                        target="_blank"><i class="icon-social-twitter"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 col-xl-4 offset-xl-0">
-                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/2019%20logo%20Bleuets%20Omnisport.jpg">
-                            <div class="card-body info" style="width: 281px;height: 150px;">
-                                <h4 class="card-title">OMNISPORT</h4>
-                                <p class="card-text">Section OMNISPORT.</p>
-                                <div class="icons"><a href="https://www.facebook.com/bleuetspau" target="_blank"><i class="icon-social-facebook"></i></a><a href="https://www.instagram.com/bleuetspau.64/" target="_blank"><i class="icon-social-instagram"></i></a><a href="https://twitter.com/bleuetspau?fbclid=IwAR2IGdpbxeFJuSUXITBEYeRn2fyYPoEFgM3Evxoymz62F3BH9iKh_PZi4no"
-                                        target="_blank"><i class="icon-social-twitter"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+	<!-- MENU -->
+	<main class="page landing-page">
+		<section class="clean-block clean-hero hero">
+			<img src="{{ asset('img/equipe.jpg') }}" class="heroBackground"/>
+			<div class="heroBackgroundBlueFilter"></div>
+			<div class="heroContent">
+				<h2 style="font-size: 80px;">
+					<strong>Bleuets de Pau</strong>
+				</h2>
+				<p>
+					<br><strong>Section FOOTBALL - Association depuis 1920</strong><br><br><br>
+				</p>
+				<a href="contact.php">
+					<button class="btn btn-outline-light btn-lg" type="button">Contactez-nous</button>
+				</a>
+			</div>
+		</section>
+		<section class="clean-block clean-info dark">
+			<div class="container">
+				<div class="block-heading">
+					<h2 class="text-info" style="text-align: center;">Actualités 2020</h2>
+					<p style="height: 27px; text-align: center;">Voici les derniers résultats de nos équipes séniors :</p>
+					<table class="table" style="text-align: center;">
+						<thead>
+							<tr>
+								<th><img src="{{ asset('img/chronometer.png') }}" style="height: 40px; width: 40px;"/></th>
+								<th><img src="{{ asset('img/trophy.png') }}" style="height: 40px; width: 40px;"/></th>
+								<th>Equipe D.</th>
+								<th><img src="{{ asset('img/tableau-de-score.png') }}" style="height: 40px; width: 40px;"/></th>
+								<th>Equipe E.</th>
+								<th><img src="{{ asset('img/stade.png') }}" style="height: 40px; width: 40px;"/></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for fiche_match in fiche_matches %}
+								{% set EquipeDomicileLogo = "/uploads/images/"~fiche_match.EquipeDomicile.image %}
+								{% set EquipeExterieureLogo = "/uploads/images/"~fiche_match.EquipeExterieure.image %}
+								<tr>
+									<td>{{ fiche_match.DateDebut ? fiche_match.DateDebut|date('Y-m-d H:i:s') : '' }}</td>
+									<td>{{ fiche_match.Nom }}</td>
+									<td><img src="{{ EquipeDomicileLogo}}" style="max-height: 50px; max-width: 50px"></td>
+									<td>{{ fiche_match.Score }}</td>
+									<td><img src="{{ EquipeExterieureLogo }}" style="max-height: 50px; max-width: 50px"></td>
+									<td>{{ fiche_match.Stade }}</td>
+									<td>
+										<a href="{{ path('fiche_match_show', {'id': fiche_match.id}) }}">
+											<img src="{{ asset('img/les-yeux-ouverts.png') }}" style="height: 20px; width: 20px;"/>
+										</a>
+										<a href="{{ path('fiche_match_edit', {'id': fiche_match.id}) }}">
+											<img src="{{ asset('img/editer.png') }}" style="height: 20px; width: 20px;"/>
+										</a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="5">Aucun match trouvé</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="row align-items-center" style="margin-top: 100px">
+					{% set beforeLastArticle = Articles[(Articles|length)-2] %}
+					<div class="col-md-8"><img class="img-thumbnail" src="{{ asset('uploads/images/' ~ beforeLastArticle.image)}}">
+					</div>
+					<div class="col-md-4">
+						<h3>{{ beforeLastArticle.nom }}</h3>
+						<div class="getting-started-info">
+							<p>{{ beforeLastArticle.description|length > 30 ? beforeLastArticle.description|slice(0, 30) ~ '...' : beforeLastArticle.description  }}</p>
+						</div>
+						<a href="{{ path('article_show', {'id': beforeLastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a>
+						<a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg mt-2" type="button">Voir la liste complète</a>
+					</div>
+				</div>
+				<div class="row align-items-center" style="margin-top: 100px">
+					{% set lastArticle = Articles | last %}
+					<div class="col-md-8"><img class="img-thumbnail" src="{{ asset('uploads/images/' ~ lastArticle.image)}}">
+					</div>
+					<div class="col-md-4">
+						<h3>{{ lastArticle.nom }}</h3>
+						<div class="getting-started-info">
+							<p>{{ lastArticle.description|length > 30 ? lastArticle.description|slice(0, 30) ~ '...' : lastArticle.description  }}</p>
+						</div>
+						<a href="{{ path('article_show', {'id': lastArticle.id}) }}" class="btn btn-outline-primary btn-lg" type="button">En savoir plus</a>
+						<a href="{{ path('article_index') }}" class="btn btn-outline-primary btn-lg mt-2" type="button">Voir la liste complète</a>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="clean-block slider dark">
+			<div class="container">
+				<div class="block-heading">
+					<h2 class="text-info" style="text-align: center;">Plus qu'un club, une famille</h2>
+					<p style="width: 450; text-align: center;">Une volonté commune de pratiquer le football, gagner et partager.&nbsp;<br></p>
+				</div>
+				<div class="carousel slide" data-ride="carousel" id="carousel-1">
+					<div class="carousel-inner" role="listbox">
+						<div class="carousel-item active"><img class="w-100 d-block" src="img/training.jpg" alt="Slide Image"></div>
+						<div class="carousel-item"><img class="w-100 d-block" src="img/vestiaires.jpg" alt="Slide Image"></div>
+						<div class="carousel-item"><img class="w-100 d-block" src="img/senioars.jpg" alt="Slide Image"></div>
+					</div>
+					<div>
+						<a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next">
+							<span class="carousel-control-next-icon"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-1" data-slide-to="1"></li>
+						<li data-target="#carousel-1" data-slide-to="2"></li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<section class="clean-block about-us">
+			<div class="container">
+				<div class="block-heading">
+					<h2 class="text-info" style="font-size: 35px; text-align: center;">Restez connecté&nbsp;</h2>
+					<p style="font-size: 19px; text-align: center;">Suivez toute l'actualité du club à travers nos différents réseaux sociaux.&nbsp;</p>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-sm-6 col-lg-4">
+						<div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/2019%20logo%20Bleuettes.jpg">
+							<div class="card-body info">
+								<h4 class="card-title">BLEUETTES</h4>
+								<p class="card-text">Section FEMININES.</p>
+								<div class="icons">
+									<a href="https://www.facebook.com/bleuetspau" target="_blank">
+										<i class="icon-social-facebook"></i>
+									</a>
+									<a href="https://www.instagram.com/bleuetspau.64/" target="_blank">
+										<i class="icon-social-instagram"></i>
+									</a>
+									<a href="https://twitter.com/bleuetspau?fbclid=IwAR2IGdpbxeFJuSUXITBEYeRn2fyYPoEFgM3Evxoymz62F3BH9iKh_PZi4no" target="_blank">
+										<i class="icon-social-twitter"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-4">
+						<div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/logo.jpg">
+							<div class="card-body info" style="height: 150px;">
+								<h4 class="card-title">BLEUETS PAU</h4>
+								<p class="card-text">Section FOOTBALL.</p>
+								<div class="icons">
+									<a href="https://www.facebook.com/bleuetspau" target="_blank">
+										<i class="icon-social-facebook"></i>
+									</a>
+									<a href="https://www.instagram.com/bleuetspau.64/" target="_blank">
+										<i class="icon-social-instagram"></i>
+									</a>
+									<a href="https://twitter.com/bleuetspau?fbclid=IwAR2IGdpbxeFJuSUXITBEYeRn2fyYPoEFgM3Evxoymz62F3BH9iKh_PZi4no" target="_blank">
+										<i class="icon-social-twitter"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-4">
+						<div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="img/2019%20logo%20Bleuets%20Omnisport.jpg">
+							<div class="card-body info">
+								<h4 class="card-title">OMNISPORT</h4>
+								<p class="card-text">Section OMNISPORT.</p>
+								<div class="icons">
+									<a href="https://www.facebook.com/bleuetspau" target="_blank">
+										<i class="icon-social-facebook"></i>
+									</a>
+									<a href="https://www.instagram.com/bleuetspau.64/" target="_blank">
+										<i class="icon-social-instagram"></i>
+									</a>
+									<a href="https://twitter.com/bleuetspau?fbclid=IwAR2IGdpbxeFJuSUXITBEYeRn2fyYPoEFgM3Evxoymz62F3BH9iKh_PZi4no" target="_blank">
+										<i class="icon-social-twitter"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
 {% endblock %}
